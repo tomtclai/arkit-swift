@@ -68,4 +68,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+//            node.light?.intensity = lightEstimate.ambientIntensity
+        }
+    }
 }

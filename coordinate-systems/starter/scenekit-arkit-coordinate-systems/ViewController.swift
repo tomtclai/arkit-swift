@@ -55,7 +55,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let boxNode = SCNNode(geometry: box)
         
         // TODO: Apply transformation
-        
+        // THIS IS FUN
+        let camera = sceneView.session.currentFrame?.camera
+        let cameraTransform = camera?.transform
+        boxNode.simdTransform = cameraTransform!
+
         // Add box node to root node
         sceneView.scene.rootNode.addChildNode(boxNode)
     }
