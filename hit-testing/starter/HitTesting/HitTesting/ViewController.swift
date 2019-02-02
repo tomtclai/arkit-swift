@@ -51,9 +51,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func didTap(_ sender: UITapGestureRecognizer) {
         // TODO: hit test here
-        
+        let location = sender.location(in: sceneView)
+        let results = sceneView.hitTest(location, types: .existingPlaneUsingExtent)
+        if let result = results.first {
+            placeDoor(result)
+        }
     }
-    
+
     private func placeDoor(_ result: ARHitTestResult) {
         
         // Get transform of result

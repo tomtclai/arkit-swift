@@ -13,7 +13,8 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    
+    var treasureOpenSound: SCNAudioSource!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +29,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+
+        treasureOpenSound = SCNAudioSource(fileNamed: "art.scnassets/TreasureOpen.mp3")!
+        treasureOpenSound.load()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +65,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     private func playTreasureOpeningSound(toNode node: SCNNode) {
-        // TODO: Play sound here
+        node.runAction(SCNAction.playAudio(treasureOpenSound, waitForCompletion: false))
     }
     
     // MARK: - ARSCNViewDelegate

@@ -54,6 +54,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBAction func didTap(_ sender: UITapGestureRecognizer) {
         // TODO: Animate door opacity
+        let door = sceneView.scene.rootNode.childNode(withName: "door", recursively: true)
+        SCNTransaction.begin()
+        door?.opacity = 1
+        SCNTransaction.animationDuration = 2
+        SCNTransaction.commit()
     }
     // MARK: - ARSCNViewDelegate
     

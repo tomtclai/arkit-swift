@@ -33,6 +33,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     private func addParticleEffects() {
+        let treasure = sceneView.scene.rootNode.childNode(withName: "treasure", recursively: true)
+        let sparkles = SCNParticleSystem(named: "Sparkles", inDirectory: nil)!
+        treasure?.addParticleSystem(sparkles)
         // TODO: Add particles here
     }
     
